@@ -1,0 +1,7 @@
+node_modules
+demo
+.gitignore
+.npmignore
+index.html
+vite.config.ts
+pnpm-lock.yaml

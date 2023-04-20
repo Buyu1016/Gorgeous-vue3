@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    </style>
+    <title>CodeGorgeous</title>
+</head>
+<body>
+    <h1>按需加载组件</h1>
+    <div id="app"></div>
+    <script type="module">
+        import { GorgeousIcon } from "../../dist/gorgeous-ui.mjs"
+        import { createApp } from "vue/dist/vue.esm-bundler.js";
+
+        createApp({
+            template: `<GorgeousIcon type="i-material-symbols-360" />`
+        }).component(GorgeousIcon.name, GorgeousIcon).mount('#app')
+    </script>
+</body>
+</html>
