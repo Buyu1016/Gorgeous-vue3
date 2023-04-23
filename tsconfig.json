@@ -1,21 +1,31 @@
 {
     "compilerOptions": {
         "declaration": true, /* 生成相关的 '.d.ts' 文件。 */
-        "declarationDir": "./dist/types", /* '.d.ts' 文件输出目录 */
+        "declarationDir": "types", /* '.d.ts' 文件输出目录 */
+        "emitDeclarationOnly": true,
         "jsx": "preserve",
         "baseUrl": "./",
         "paths": {
             "@/*": ["./src/*"]
         },
         "strictNullChecks": true,
+        "skipLibCheck": true,
+        "lib": ["DOM", "ESNext"],
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "outDir": "./dist",
+        "removeComments": true,
     },
     "include": [
         "./**/*.*",
-        "./src/types/**/*.d.ts"
+        "dist/types/**/*.d.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "demo",
+        "config",
+        "dist",
+        "docs",
+        "coverage"
     ],
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": "true"
 }

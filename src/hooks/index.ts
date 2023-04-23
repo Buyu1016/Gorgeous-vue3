@@ -1,1 +1,2 @@
-export * as useTouch from "./useTouch";
+export * from "./useTouch";
+export * from "./useEvent";

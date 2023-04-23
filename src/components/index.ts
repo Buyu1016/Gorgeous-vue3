@@ -1,10 +1,15 @@
 import { App } from "vue";
 import GorgeousFloatButton from "./FloatButton";
-import "uno.css"
+import GorgeousImage from "./Image";
+import GorgeousInput from "./Input";
+import GorgeousSelect from "./Select";
 
-const Components = [GorgeousFloatButton];
+const Components = [GorgeousFloatButton, GorgeousImage, GorgeousInput, GorgeousSelect];
 export {
-    GorgeousFloatButton
+    GorgeousFloatButton,
+    GorgeousImage,
+    GorgeousInput,
+    GorgeousSelect
 }
 
 // 全量注册

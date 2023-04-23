@@ -1,5 +1,5 @@
-import { defineComponent, renderSlot, useSlots, PropType, ref, onMounted } from "vue";
-import useTouch from "@/hooks/useTouch";
+import { defineComponent, PropType, ref } from "vue";
+import { useTouch } from "@/hooks/useTouch";
 
 export default defineComponent({
     name: "GorgeousFloatButton",
@@ -22,11 +22,10 @@ export default defineComponent({
         // 悬浮按钮是否吸附
         ifAdsorption: {
             type: Boolean as PropType<boolean>,
-            default: true
+            default: false
         }
     },
-    setup(props) {
-        const slots = useSlots();
+    setup(props, { slots }) {
         const oFloatButtonElement = ref<HTMLDivElement>();
         const { position, className, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouch({
             root: oFloatButtonElement,
@@ -48,7 +47,7 @@ export default defineComponent({
                 onTouchmove={handleTouchMove}
                 onTouchend={handleTouchEnd}
             >
-                { renderSlot(slots, 'default') }
+                { slots.default?.() }
             </div>
         )
     }

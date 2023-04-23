@@ -1,6 +1,6 @@
 import { ref, Ref, onMounted } from "vue";
 
-interface UseTouchOptions {
+export interface UseTouchOptions {
     root: Ref<HTMLElement | undefined>
     position: Exclude<TouchElementStatus, "move">
     top: string
@@ -8,9 +8,9 @@ interface UseTouchOptions {
 }
 type TouchPosition <T> = Record<"top" | "left", T>
 type TouchElementStatus = "move" | "left" | "right";
-type TouchElementClassNameStatus = `gorgeous-float-${TouchElementStatus}`
+export type TouchElementClassNameStatus = `gorgeous-float-${TouchElementStatus}`
 
-export default function useTouch(options: UseTouchOptions) {
+export function useTouch(options: UseTouchOptions) {
     const oPosition = ref<TouchPosition<string>>({
             top: "0",
             left: "0"
@@ -54,8 +54,8 @@ export default function useTouch(options: UseTouchOptions) {
             if (!options.root?.value) return
             const { clientX, clientY } = e.touches[0]
             let moveX = clientX - oTouchDiff.value.top,
-                moveY = clientY - oTouchDiff.value.left,
-                { offsetHeight, offsetWidth } = options.root.value
+                moveY = clientY - oTouchDiff.value.left;
+            const { offsetHeight, offsetWidth } = options.root.value
             if (moveX + offsetWidth > window.innerWidth) moveX = window.innerWidth - offsetWidth
             else if (moveX < 0) moveX = 0
             if (moveY + offsetHeight > window.innerHeight) moveY = window.innerHeight - offsetHeight

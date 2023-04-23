@@ -1,8 +1,11 @@
+/// <reference types="vitest" />
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'path'
 import Unocss from "./config/unocss";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
     resolve: {
@@ -13,7 +16,10 @@ export default defineConfig({
     plugins: [
         vue(),
         vueJsx(),
-        Unocss()
+        Unocss(),
+        dts({
+            root: resolve(__dirname, './'),
+        })
     ],
     build: {
         cssCodeSplit: true,
@@ -21,7 +27,7 @@ export default defineConfig({
             external: ["vue", "vue-router"],
             output: {
                 globals: {
-                vue: "Vue",
+                    vue: "Vue",
                 },
             },
         },
@@ -30,8 +36,7 @@ export default defineConfig({
             entry: "./src/entry.ts",
             name: "Gorgeous",
             fileName: "gorgeous-ui",
-            // 导出模块格式
-            formats: ["es", "umd","iife"],
+            formats: ["es", "cjs", "iife"]
         }
     },
     css: {
@@ -39,6 +44,13 @@ export default defineConfig({
             less: {
                 javascriptEnabled: true
             }
+        }
+    },
+    test: {
+        globals: true,
+        environment: 'happy-dom',
+        transformMode: {
+            web: [/.[tj]sx$/]
         }
     }
 })

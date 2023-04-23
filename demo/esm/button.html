@@ -12,12 +12,11 @@
     <h1>按需加载组件</h1>
     <div id="app"></div>
     <script type="module">
-        import { GorgeousIcon } from "../../dist/gorgeous-ui.mjs"
         import { createApp } from "vue/dist/vue.esm-bundler.js";
 
         createApp({
             template: `<GorgeousIcon type="i-material-symbols-360" />`
-        }).component(GorgeousIcon.name, GorgeousIcon).mount('#app')
+        }).mount('#app')
     </script>
 </body>
 </html>
