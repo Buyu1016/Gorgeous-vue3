@@ -1,0 +1,31 @@
+name: Publish NPM Package
+
+on:
+  push:
+    branches: [publish]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    name: "publish npm"
+
+    environment: npm
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: uses: pnpm/action-setup@v2.2.4
+        with:
+          version: "7.26.0"
+      - name: Install modules
+        run: pnpm install
+      - name: Build
+        run: pnpm run build
+      - name: "Publish to the npm registry"
+        uses: primer/publish@3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        with:
+          default_branch: "publish"
+          dir: "."
