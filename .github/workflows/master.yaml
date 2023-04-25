@@ -1,0 +1,29 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-checkout@v2
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: "7.26.0"
+      - name: Install modules
+        run: pnpm install
+      - name: Run UnitTest
+        run: pnpm run lint
+  UnitTest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-checkout@v2
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: "7.26.0"
+      - name: Install modules
+        run: pnpm install
+      - name: Run UnitTest
+        run: pnpm run test:run

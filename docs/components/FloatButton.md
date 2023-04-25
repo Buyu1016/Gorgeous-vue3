@@ -5,11 +5,9 @@
 ## 示例
 
 ### 基础用法
-<div>
-    <GorgeousFloatButton>
-        <span class="p-4 rd bg-sky color-white">Slot</span>
-    </GorgeousFloatButton>
-</div>
+<GorgeousFloatButton>
+    <span class="p-4 rd bg-sky color-white">Slot</span>
+</GorgeousFloatButton>
 
 ::: details Vue
 
@@ -25,11 +23,9 @@
 
 ### 指定初始位置
 使用`top`指定按钮距离视口顶部的距离, 使用`position`指定按钮初始位于视口的方位
-<div>
-    <GorgeousFloatButton top="85%" position="left">
-        <span class="p-4 rd bg-sky color-white">Position</span>
-    </GorgeousFloatButton>
-</div>
+<GorgeousFloatButton top="85%" position="left">
+    <span class="p-4 rd bg-sky color-white">Position</span>
+</GorgeousFloatButton>
 
 ::: details Vue
 
@@ -45,11 +41,9 @@
 
 ### 自动吸附
 使用`if-adsorption`指定悬浮按钮的可吸附性
-<div>
-    <GorgeousFloatButton if-adsorption top="80%">
-        <span class="p-4 rd bg-sky color-white">Adsorption</span>
-    </GorgeousFloatButton>
-</div>
+<GorgeousFloatButton if-adsorption top="80%">
+    <span class="p-4 rd bg-sky color-white">Adsorption</span>
+</GorgeousFloatButton>
 
 ::: details Vue
 

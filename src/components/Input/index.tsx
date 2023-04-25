@@ -45,6 +45,9 @@ export default defineComponent({
         watch(value, val => emit("update:value", val))
         const oInput = ref<HTMLInputElement>();
         const oInputStatus = ref(props.autofocus);
+        const defaultSlots = {
+            clear: <>X</>
+        };
         props.enterConfirm && useEvent({
             root: oInput,
             events: [{
@@ -85,9 +88,9 @@ export default defineComponent({
                     autocomplete={props.autocomplete}
                     autofocus={props.autofocus}
                     disabled={props.disable}
-                    class="border-none p-0 h-full block bg-transparent p-1"
+                    class="inline-block border-none p-0 h-full block bg-transparent p-1"
                 />
-                { props.clearable && <div onClick={handleClear}>{ slots.clear?.() }</div> }
+                { props.clearable && (value.value) && <div class="inline-block px-1 cursor-pointer" onClick={handleClear}>{ slots.clear?.() || defaultSlots.clear }</div> }
                 { slots.right?.() }
             </div>
         );

@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref } from "vue";
+import { defineComponent, PropType, ref, onMounted } from "vue";
 
 type ImageFit = "fill" | "contain" | "cover" | "none" | "scale-down"
 type ImageLoading = "eager" | "lazy"
@@ -32,6 +32,9 @@ export default defineComponent({
         const oImage = ref<HTMLImageElement>();
         const imageErrorLock = ref(false);
         const imageLoadLock = ref(false);
+        onMounted(() => {
+            oImage.value && (oImage.value.loading = props.loading);
+        });
         function handleImageError(e: Event) {
             imageErrorLock.value = true;
             emit("error", e);

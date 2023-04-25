@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -22,22 +20,24 @@ export default defineConfig({
         })
     ],
     build: {
-        cssCodeSplit: true,
         rollupOptions: {
-            external: ["vue", "vue-router"],
+            external: ["vue"], // 打包时把vue库排除
             output: {
                 globals: {
                     vue: "Vue",
                 },
             },
         },
-        minify:false,
+        minify: "terser", // 代码混淆
+        reportCompressedSize: true, // 代码压缩报告
+        cssCodeSplit: true, // css代码切割
+        sourcemap: true, // 源码地图
         lib: {
             entry: "./src/entry.ts",
             name: "Gorgeous",
             fileName: "gorgeous-ui",
-            formats: ["es", "cjs", "iife"]
-        }
+            formats: ["es", "cjs", "iife"] // 打包产物的模式规范
+        },
     },
     css: {
         preprocessorOptions: {
