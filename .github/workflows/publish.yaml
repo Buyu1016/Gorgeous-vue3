@@ -22,10 +22,6 @@ jobs:
       - name: Build
         run: pnpm run build
       - name: "Publish to the npm registry"
-        uses: primer/publish@v3
+        uses: JS-DevTools/npm-publish@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          default_branch: "publish"
-          dir: "."
+          token: ${{ secrets.NPM_TOKEN }}
