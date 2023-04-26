@@ -51,6 +51,10 @@ export default defineConfig({
         environment: 'happy-dom',
         transformMode: {
             web: [/.[tj]sx$/]
-        }
+        },
+        coverage: {
+            provider: "istanbul",
+            reporter: ["text", "json", "html"],
+        },
     }
 })
