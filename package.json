@@ -5,7 +5,9 @@
   "main": "dist/gorgeous-ui.iife.js",
   "module": "dist/gorgeous-ui.mjs",
   "keywords": [
-    "CodeGorgeous"
+    "CodeGorgeous",
+    "Gorgeous",
+    "vue3"
   ],
   "author": "CodeGorgeous",
   "license": "ISC",
@@ -14,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CodeGorgeous/GorgeousUI"
+    "url": "git+https://github.com/CodeGorgeous/Gorgeous-vue3"
   },
   "scripts": {
     "dev": "vite --host",

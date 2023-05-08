@@ -1,6 +1,6 @@
 import { defineComponent, PropType, ref, computed, watch } from 'vue'
 import "./style.less";
-import { useEvent } from "@/hooks";
+import { useEvent } from "@/useFunction";
 
 export interface SelectOptionsItem {
     label: string
@@ -98,7 +98,7 @@ export default defineComponent({
                     { labelValue.value && props.clearable && <div onClick={handleClear}>{ slots.clear?.() || defaultSlots.clear }</div> }
                 </div>
                 <div
-                    class={`gorgeous-options ${optionsPlacementClassName.value}`}
+                    class={`gorgeous-options ${optionsPlacementClassName.value} ${optionsLock.value ? 'gorgeous-options-active' : ''}`}
                     style={{
                         maxHeight: optionsLock.value ? props.optionsMaxHeight : "0"
                     }}

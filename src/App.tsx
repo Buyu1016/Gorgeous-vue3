@@ -1,4 +1,6 @@
 import { defineComponent, ref, watch } from 'vue'
+import "./style.css";
+import { useSlidingDirection, useAsync } from "./useFunction"
 
 export default defineComponent({
     setup() {
@@ -23,8 +25,19 @@ export default defineComponent({
             label: "选项5",
             value: "4"
         }];
+        useSlidingDirection({
+            watchDirectionChange(type, diff) {
+                console.log(`您向${type}方位移动了${diff}像素距离`);
+            },
+        });
+        const { loading } = useAsync(async () => {
+            await new Promise((resolve, reject) => {
+                setTimeout(resolve, 3000);
+            });
+        });
         return () => (
             <>
+                <div v-loading={loading.value}></div>
                 {/* <gorgeous-image
                     class="w-xs h-xs"
                     src="https://oss.cloud.custouch.com/res/163945/banner2.png"
@@ -34,22 +47,26 @@ export default defineComponent({
                         placeholder: () => (<>Loading...</>)
                     }}
                     onLoad={() => {console.log("加载完毕");}}
-                ></gorgeous-image>
+                ></gorgeous-image> */}
+                {/* {`${loading.value}`} */}
                 <gorgeous-input
                     v-model={inputValue}
                     type="text"
                     placeholder="输入框的默认placeholder"
-                    autofocus
                     enterConfirm
+                    v-slots={{
+                        right: () => (<>Q</>)
+                    }}
                     onBlur={() => {console.log("失焦")}}
                     onFocus={() => {console.log("聚焦")}}
                     onChange={(val) => {console.log("改变", val)}}
                     onConfirm={() => {console.log("确认")}}
-                ></gorgeous-input> */}
-                <gorgeous-select
+                ></gorgeous-input>
+                <i class="i-mingcute-search-line"></i>
+                {/* <gorgeous-select
                     v-model={selectValue}
                     options={selectOptions}
-                ></gorgeous-select>
+                ></gorgeous-select> */}
             </>
         )
     }

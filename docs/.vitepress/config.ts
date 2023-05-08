@@ -1,3 +1,6 @@
+import path from "path";
+import fs from "fs";
+
 const nav = [
     { text: "Npm", link: "https://www.npmjs.com/package/@codegorgeous/gorgeous-ui" },
     { text: "Github", link: "https://github.com/CodeGorgeous/GorgeousUI" },
@@ -20,17 +23,20 @@ const sidebar = [
         ]
     },
     {
-        text: "Hooks",
-        items: [
-            { text: 'useEvent', link: '/hooks/useEvent' }, 
-            { text: 'useTouch', link: '/hooks/useTouch' }, 
-        ]
+        text: "组合式API",
+        items: fs.readdirSync(path.resolve(__filename, "..", "..", "useFunction")).map(name => {
+            const _name = name.split(".")[0];
+            return {
+                text: _name,
+                link: `/useFunction/${_name}`
+            }
+        })
     }
 ]
 
 const config = {
-    title: "GorgeousUI",
-    description: "CodeGorgeous自行搭建的一套Vue3UI库",
+    title: "Gorgeous",
+    description: "CodeGorgeous自行搭建的一套Vue3相关库",
     lang: "zh",
     themeConfig: {
         nav,

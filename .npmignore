@@ -6,6 +6,7 @@ config
 demo
 docs
 test
+coverage
 .DS_Store
 .gitignore
 src

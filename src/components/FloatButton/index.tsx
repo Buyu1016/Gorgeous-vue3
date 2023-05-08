@@ -1,5 +1,6 @@
 import { defineComponent, PropType, ref } from "vue";
-import { useTouch } from "@/hooks/useTouch";
+import { useTouch } from "@/useFunction/useTouch";
+import "./index.less";
 
 export default defineComponent({
     name: "GorgeousFloatButton",
@@ -27,7 +28,7 @@ export default defineComponent({
     },
     setup(props, { slots }) {
         const oFloatButtonElement = ref<HTMLDivElement>();
-        const { position, className, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouch({
+        useTouch({
             root: oFloatButtonElement,
             position: props.position,
             top: props.top,
@@ -37,15 +38,10 @@ export default defineComponent({
         return () => (
             <div
                 ref={oFloatButtonElement}
-                class={`fixed cursor-pointer select-none ${className.value}`}
+                class={`gorgeous-float-button`}
                 style={{
-                    top: position.value.top,
-                    left: position.value.left,
                     zIndex: props.zIndex
                 }}
-                onTouchstart={handleTouchStart}
-                onTouchmove={handleTouchMove}
-                onTouchend={handleTouchEnd}
             >
                 { slots.default?.() }
             </div>

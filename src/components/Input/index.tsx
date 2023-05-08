@@ -1,5 +1,5 @@
 import { defineComponent, ref, PropType, watch } from "vue";
-import { useEvent } from "@/hooks";
+import { useEvent } from "@/useFunction";
 import "./style.less";
 
 export default defineComponent({
@@ -75,9 +75,9 @@ export default defineComponent({
 
         return () => (
             <div
-                class={`gorgeous-input inline-block border-1 b-dark border-style-double ${ props.disable ? 'disabled bg-gray' : '' }`}
+                class={`gorgeous-input ${ props.disable ? 'disabled' : '' }`}
             >
-                { slots.left?.() }
+                { slots.left && <div class="gorgeous-left-slot">{ slots.left() }</div> }
                 <input
                     ref={oInput}
                     type={props.type}
@@ -88,10 +88,10 @@ export default defineComponent({
                     autocomplete={props.autocomplete}
                     autofocus={props.autofocus}
                     disabled={props.disable}
-                    class="inline-block border-none p-0 h-full block bg-transparent p-1"
+                    class=""
                 />
                 { props.clearable && (value.value) && <div class="inline-block px-1 cursor-pointer" onClick={handleClear}>{ slots.clear?.() || defaultSlots.clear }</div> }
-                { slots.right?.() }
+                { slots.right && <div class="gorgeous-right-slot">{ slots.right() }</div> }
             </div>
         );
     }
