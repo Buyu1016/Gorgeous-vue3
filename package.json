@@ -19,6 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/CodeGorgeous/Gorgeous-vue3"
   },
+  "homepage": "https://gorgeous-vue3.vercel.app",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
