@@ -37,11 +37,13 @@
 ## 类型定义
 
 ```ts
-    interface UseAsyncOptions <T extends () => any> {
-        init?: PromiseReturnType<T>
+    interface UseAsyncOptions <T> {
+        init?: T
         errorHandle?: (err: any) => void
         start?: boolean
     }
+
+    type UseAsyncPromise <T> = () => Promise<T>;
 ```
 
 ## API
