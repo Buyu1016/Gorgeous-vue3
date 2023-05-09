@@ -5,7 +5,7 @@
 ## 导出
 
 ```ts
-    import { UseClickAwayOptions, useClickAway } from "@codegorgeous/gorgeous-ui";
+    import { UseClickAwayOptions, useClickAway } from "@codegorgeous/gorgeous-vue3";
 ```
 
 ## 示例

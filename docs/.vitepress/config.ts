@@ -8,7 +8,7 @@ const config = defineConfig({
     lang: "zh",
     themeConfig: {
         nav: [
-            { text: "Npm", link: "https://www.npmjs.com/package/@codegorgeous/gorgeous-ui" },
+            { text: "Npm", link: "https://www.npmjs.com/package/@codegorgeous/gorgeous-vue3" },
             { text: "Github", link: "https://github.com/CodeGorgeous/GorgeousUI" },
             { text: "Issues", link: "https://github.com/CodeGorgeous/GorgeousUI/issues" }
         ],
@@ -42,7 +42,6 @@ const config = defineConfig({
             provider: 'local'
         },
         outlineTitle: "目录",
-        lastUpdatedText: document.lastModified,
     }
 });
 

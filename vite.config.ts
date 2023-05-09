@@ -35,7 +35,7 @@ export default defineConfig({
         lib: {
             entry: "./src/entry.ts",
             name: "Gorgeous",
-            fileName: "gorgeous-ui",
+            fileName: "gorgeous-vue3",
             formats: ["es", "cjs", "iife"] // 打包产物的模式规范
         },
     },

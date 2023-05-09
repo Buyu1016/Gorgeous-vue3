@@ -5,7 +5,7 @@
 ## 导出
 
 ```ts
-    import { UseAsyncOptions, useAsync } from "@codegorgeous/gorgeous-ui"
+    import { UseAsyncOptions, useAsync } from "@codegorgeous/gorgeous-vue3"
 ```
 
 ## 示例

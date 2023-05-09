@@ -6,10 +6,10 @@
 
 **Npm**
 ```shell
-    npm install @codegorgeous/gorgeous-ui
+    npm install @codegorgeous/gorgeous-vue3
 ```
 
 **Yarn**
 ```shell
-    yarn add @codegorgeous/gorgeous-ui
+    yarn add @codegorgeous/gorgeous-vue3
 ```

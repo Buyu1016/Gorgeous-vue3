@@ -5,7 +5,7 @@
 ## 导出
 
 ```ts
-    import { UseTouchOptions, TouchElementStatus, TouchElementClassNameStatus, useTouch } from "@codegorgeous/gorgeous-ui";
+    import { UseTouchOptions, TouchElementStatus, TouchElementClassNameStatus, useTouch } from "@codegorgeous/gorgeous-vue3";
 ```
 
 ## 示例

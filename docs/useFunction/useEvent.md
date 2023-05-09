@@ -5,7 +5,7 @@
 ## 导出
 
 ```ts
-    import { UseEventHandle, UseEventOptions, useEvent } from "@codegorgeous/gorgeous-ui";
+    import { UseEventHandle, UseEventOptions, useEvent } from "@codegorgeous/gorgeous-vue3";
 ```
 
 ## 示例

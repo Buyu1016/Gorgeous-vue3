@@ -5,7 +5,7 @@
 ## 导出
 
 ```ts
-    import { UseSlidingDirectionOptions, UseSlidingDirection, useSlidingDirection } from "@codegorgeous/gorgeous-ui";
+    import { UseSlidingDirectionOptions, UseSlidingDirection, useSlidingDirection } from "@codegorgeous/gorgeous-vue3";
 ```
 
 ## 示例

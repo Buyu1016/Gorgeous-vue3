@@ -1,9 +1,9 @@
 {
-  "name": "@codegorgeous/gorgeous-ui",
-  "version": "2.0.1",
+  "name": "@codegorgeous/gorgeous-vue3",
+  "version": "0.0.1",
   "description": "",
-  "main": "dist/gorgeous-ui.iife.js",
-  "module": "dist/gorgeous-ui.mjs",
+  "main": "dist/gorgeous-vue3.iife.js",
+  "module": "dist/gorgeous-vue3.mjs",
   "types": "dist/entry.d.ts",
   "keywords": [
     "CodeGorgeous",

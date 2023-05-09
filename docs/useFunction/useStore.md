@@ -5,7 +5,7 @@ LocalStorage的命令式写法, 自动初始化LocalStorage以及良好的Ts支�
 ## 导出
 
 ```ts
-    import { UseStorageOptions, useStorage } from "@codegorgeous/gorgeous-ui";
+    import { UseStorageOptions, useStorage } from "@codegorgeous/gorgeous-vue3";
 ```
 
 ## 示例

@@ -5,7 +5,7 @@
 ## 导出
 
 ```ts
-    import { UseToggleOptions, useToggle } from "@codegorgeous/gorgeous-ui";
+    import { UseToggleOptions, useToggle } from "@codegorgeous/gorgeous-vue3";
 ```
 
 ## 示例

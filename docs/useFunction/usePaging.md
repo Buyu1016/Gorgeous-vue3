@@ -5,7 +5,7 @@
 ## 导出
 
 ```ts
-    import { UsePagingOptions, UsePagingCallback, usePaging } from "@codegorgeous/gorgeous-ui";
+    import { UsePagingOptions, UsePagingCallback, usePaging } from "@codegorgeous/gorgeous-vue3";
 ```
 
 ## 示例

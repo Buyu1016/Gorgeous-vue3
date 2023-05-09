@@ -1,3 +1,3 @@
-import { useAsync, GorgeousFloatButton } from "../dist/gorgeous-ui.mjs";
+import { useAsync, useClickAway, GorgeousFloatButton } from "../dist/gorgeous-vue3.mjs";
 
 console.log(useAsync, GorgeousFloatButton);
