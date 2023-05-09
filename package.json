@@ -25,7 +25,7 @@
     "docs:dev": "vitepress dev docs --port 3000",
     "docs:build": "vitepress build docs",
     "docs:server": "vitepress server docs",
-    "release": "npm publish --no-git-checks --access public",
+    "release": "pnpm build && npm publish --no-git-checks --access public",
     "patch": "npm version patch",
     "minor": "npm version minor",
     "major": "npm version major",
