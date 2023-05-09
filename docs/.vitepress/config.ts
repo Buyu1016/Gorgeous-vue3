@@ -25,6 +25,7 @@ const config = defineConfig({
                     { text: '浮动按钮 / FloatButton', link: '/components/FloatButton' }, 
                     { text: '图片 / Image', link: '/components/Image' }, 
                     { text: '输入框 / Input', link: '/components/Input' }, 
+                    { text: '富文本 / RichText', link: '/components/RichText' }, 
                 ]
             },
             {
