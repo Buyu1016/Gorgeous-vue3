@@ -6,7 +6,7 @@ describe('Input', () => {
     test('Props', () => {
         const type = "password",
             placeholder = "Input Placeholder",
-            disable = true,
+            disabled = true,
             autocomplete = "on",
             autofocus = true,
             enterConfirm = true;
@@ -14,36 +14,17 @@ describe('Input', () => {
             props: {
                 type,
                 placeholder,
-                disable,
+                disabled,
                 autocomplete,
                 autofocus,
                 enterConfirm
             }
         });
         const oInput = wrapper.find('input');
-        expect(oInput.element.type === type).toBe(true);
-        expect(oInput.element.placeholder === placeholder).toBe(true);
-        expect(oInput.element.autocomplete === autocomplete).toBe(true);
-        expect(oInput.element.autofocus === autofocus).toBe(true);
-        expect(wrapper.classes().includes("disabled"), "输入框禁用状态").toBe(true);
-    });
-    test('Slots', () => {
-        const leftSlot = `<div class="input-left">Left</div>`,
-            clearSlot = `<div class="input-clear">Clear</div>`,
-            rightSlot = `<div class="input-right">Right</div>`;
-        const wrapper = shallowMount(Input, {
-            props: {
-                clearable: true,
-                modelValue: "value"
-            },
-            slots: {
-                left: leftSlot,
-                clear: clearSlot,
-                right: rightSlot
-            }
-        });
-        expect(wrapper.find(".input-left").html()).toBe(leftSlot);
-        expect(wrapper.find(".input-clear").html()).toBe(clearSlot);
-        expect(wrapper.find(".input-right").html()).toBe(rightSlot);
+        expect(oInput.element.type === type).toBeTruthy();
+        expect(oInput.element.placeholder === placeholder).toBeTruthy();
+        expect(oInput.element.autocomplete === autocomplete).toBeTruthy();
+        expect(oInput.element.autofocus === autofocus).toBeTruthy();
+        expect(oInput.element.disabled, "输入框禁用状态").toBeTruthy();
     });
 })

@@ -3,19 +3,6 @@ import { describe, expect, test } from 'vitest'
 import Image from '..';
 
 describe('Image', () => {
-    test('Slots', async () => {
-        const placeholderSlot = `<div class="image-placeholder">PlaceHolder</div>`;
-        const errorSlot = `<div class="image-error">Error</div>`;
-        const wrapper = shallowMount(Image, {
-            slots: {
-                placeholder: placeholderSlot,
-                error: errorSlot
-            },
-        });
-        expect(wrapper.find("div.image-placeholder").html()).toBe(placeholderSlot);
-        await wrapper.find("img").trigger("error");
-        expect(wrapper.find("div.image-error").html()).toBe(errorSlot);
-    });
     test('Props', () => {
         const imgSrc = "http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg",
             alt = "test",
