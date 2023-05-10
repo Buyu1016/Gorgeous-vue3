@@ -17,6 +17,7 @@ export default defineComponent({
             'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
             'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
         ]
+        const inputValue = ref("");
         return () => (
             <>
                 {/* <div class="h-200">你好</div> */}
@@ -28,9 +29,23 @@ export default defineComponent({
                     src={_imgSrc.value}
                     fit="cover"
                 ></gorgeous-image> */}
-                {/* <div style="height: 300px; overflow: hidden auto;"> */}
+                {/* <div style="height: 300px; overflow: hidden auto;">
                     { urls.map(url => (<gorgeous-image key={url} src={url} class="w-full h-100" lazy></gorgeous-image>)) }
-                {/* </div> */}
+                </div> */}
+                <gorgeous-input
+                    v-model={inputValue}
+                    format={(val) => {
+                        return val.split(",")[0];
+                    }}
+                    formatOpportunity="change"
+                    onChange={(val) => {
+                        console.log(val);
+                    }}
+                    confirmKey="k"
+                    onConfirm={(val) => {
+                        console.log("确认", val);
+                    }}
+                ></gorgeous-input>
             </>
         )
     }

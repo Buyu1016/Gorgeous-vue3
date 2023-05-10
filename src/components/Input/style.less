@@ -1,36 +1,8 @@
 .gorgeous-input {
-    border: 1px solid #DDDDDD;
-    padding: 0 16px;
-    min-height: 36px;
     display: inline-block;
-    &.disabled {
-        background: red;
-        cursor: no-drop;
-        input {
-            cursor: no-drop;
-        }
-    }
-
-    .gorgeous-left-slot {
-        display: inline-block;
-        padding-right: 16px;
-    }
-
-    .gorgeous-right-slot {
-        display: inline-block;
-        padding-left: 16px;
-    }
-
-    input {
-        height: 100%;
-        display: inline-block;
-        border: none;
-        background-color: transparent;
-        &:focus-visible {
-            outline: none;
-        }
-        &::placeholder {
-            color: #AAAAAA;
-        }
+    border: 2px inset;
+    border-image: internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    &:focus-visible {
+        outline: none;
     }
 }

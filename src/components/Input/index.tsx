@@ -1,6 +1,7 @@
 import { defineComponent, ref, PropType, watch } from "vue";
-import { useEvent } from "@/useFunction";
 import "./style.less";
+
+export type InputFormatOpportunity = "blur" | "change";
 
 export default defineComponent({
     name: "GorgeousInput",
@@ -17,10 +18,6 @@ export default defineComponent({
             type: String as PropType<string>,
             required: false
         },
-        clearable: {
-            type: Boolean as PropType<boolean>,
-            default: false
-        },
         disabled: {
             type: Boolean as PropType<boolean>,
             default: false
@@ -33,45 +30,54 @@ export default defineComponent({
             type: Boolean as PropType<boolean>,
             default: false
         },
-        enterConfirm: {
-            type: Boolean as PropType<boolean>,
-            default: false
+        // e.key
+        confirmKey: {
+            type: String as PropType<string>,
+            default: "Enter"
+        },
+        format: {
+            type: Function as PropType<(value: string) => string>,
+        },
+        formatOpportunity: {
+            type: String as PropType<InputFormatOpportunity>,
+            default: "blur"
         },
         rule: {}
     },
     emits: ["update:value", "confirm", "focus", "blur", "change", "clear"],
     setup(props, { emit }) {
-        const value = ref(props.modelValue);
+        const value = ref(props.modelValue || "");
         watch(value, val => emit("update:value", val))
         const oInput = ref<HTMLInputElement>();
-        const oInputStatus = ref(props.autofocus);
-        props.enterConfirm && useEvent({
-            root: oInput,
-            events: [{
-                type: "keydown",
-                handle: handleKeyDown
-            }]
-        });
         function handleKeyDown(e: KeyboardEvent) {
-            if (e.code === "Enter") emit("confirm", value.value);
+            if (!props.confirmKey) return;
+            if (e.key === props.confirmKey) emit("confirm", value.value);
         };
-        function handleFocus() {
-            oInputStatus.value = true;
-            emit("focus");
+        function handleFocus(e: FocusEvent) {
+            emit("focus", e);
         };
-        function handleBlur() {
-            oInputStatus.value = false;
-            emit("blur");
+        function handleBlur(e: FocusEvent) {
+            props.format && (props.formatOpportunity === "blur") && format();
+            emit("blur", e);
         };
-        watch(value, val => {
-            emit("change", val);
+        function format() {
+            if (props.format) {
+                const _formatValue = props.format(value.value);
+                if (_formatValue !== value.value) value.value = _formatValue // 回到正常经过格式化的值
+                else emit("change", value.value);
+            }
+        }
+        watch(value, (val) => {
+            if (props.format && props.formatOpportunity === "change") {
+                format();
+            } else emit("change", val);
         });
 
         return () => (
             <input
                 ref={oInput}
                 v-model={value.value}
-                class="gorgeous-input"
+                class={`gorgeous-input`}
                 type={props.type}
                 placeholder={props.placeholder}
                 autocomplete={props.autocomplete}
@@ -79,6 +85,7 @@ export default defineComponent({
                 disabled={props.disabled}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                onKeydown={handleKeyDown}
             />
         );
     }
