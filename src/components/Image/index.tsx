@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref, onMounted } from "vue";
+import { defineComponent, PropType, ref, onMounted, computed } from "vue";
 
 type ImageFit = "fill" | "contain" | "cover" | "none" | "scale-down"
 type ImageLoading = "eager" | "lazy"
@@ -25,13 +25,20 @@ export default defineComponent({
         zip: {
             type: Function as PropType<(url: string) => string>,
             default: (url) => url
+        },
+        lazy: {
+            type: Boolean as PropType<boolean>,
+            default: false
         }
     },
     emits: ["error", "load"],
-    setup(props, { emit, slots }) {
+    setup(props, { emit }) {
         const oImage = ref<HTMLImageElement>();
         const imageErrorLock = ref(false);
         const imageLoadLock = ref(false);
+        const _src = computed(() => {
+            return props.zip(props.src);
+        });
         onMounted(() => {
             oImage.value && (oImage.value.loading = props.loading);
         });
@@ -43,27 +50,15 @@ export default defineComponent({
             imageLoadLock.value = true;
             emit("load", e);
         }
-        const _defaultSlots = {
-            placeholder: <>加载中...</>,
-            error: <>Error!</>
-        };
         return () => (
-            <div class="display-inline-block relative">
-                {!imageErrorLock.value && (<img
-                    ref={oImage}
-                    src={props.zip(props.src)}
-                    alt={props.alt}
-                    class={`relative z-1 w-full h-full block object-${props.fit}`}
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
-                />)}
-                <div class="absolute top-0 left-0 w-full h-full">
-                    {/* 图片加载错误时的错误展示插槽 */}
-                    { imageErrorLock.value && (slots.error?.() || _defaultSlots.error) }
-                    {/* 图片未加载好时默认展示插槽 */}
-                    { (!imageLoadLock.value && !imageErrorLock.value) && (slots.placeholder?.() || _defaultSlots.placeholder) }
-                </div>
-            </div>
+            <img
+                ref={oImage}
+                src={_src.value}
+                alt={props.alt}
+                class={`block object-${props.fit}`}
+                onLoad={handleImageLoad}
+                onError={handleImageError}
+            />
         )
     }
 });
