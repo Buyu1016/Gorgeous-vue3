@@ -20,7 +20,7 @@ const config = defineConfig({
                 ]
             },
             {
-                text: "Components",
+                text: "组件",
                 items: [
                     { text: '浮动按钮 / FloatButton', link: '/components/FloatButton' }, 
                     { text: '图片 / Image', link: '/components/Image' }, 
@@ -29,7 +29,17 @@ const config = defineConfig({
                 ]
             },
             {
-                text: "组合式API",
+                text: "指令",
+                items: fs.readdirSync(path.resolve(__filename, "..", "..", "directives")).map(name => {
+                    const _name = name.split(".")[0];
+                    return {
+                        text: `v-${_name}`,
+                        link: `/directives/${_name}`
+                    }
+                })
+            },
+            {
+                text: "组合式函数",
                 items: fs.readdirSync(path.resolve(__filename, "..", "..", "useFunction")).map(name => {
                     const _name = name.split(".")[0];
                     return {
