@@ -2,18 +2,14 @@
 
 LocalStorage的命令式写法, 自动初始化LocalStorage以及良好的Ts支持
 
-## 导出
-
-```ts
-    import { UseStorageOptions, useStorage } from "@codegorgeous/gorgeous-vue3";
-```
-
 ## 示例
 
 ### 基础示例
 
 ```vue
 <script lang="ts" setup>
+    import { useStorage } from "@codegorgeous/gorgeous-vue3";
+
     const { set, get, remove, clear } = useStorage({
         init: {
             storage_one: "Hello World"

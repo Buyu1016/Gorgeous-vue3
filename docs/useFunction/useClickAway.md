@@ -2,12 +2,6 @@
 
 判定点击处是否位于目标元素之外
 
-## 导出
-
-```ts
-    import { UseClickAwayOptions, useClickAway } from "@codegorgeous/gorgeous-vue3";
-```
-
 ## 示例
 
 ### 基础示例
@@ -19,6 +13,7 @@
 
 <script lang="ts" setup>
     import { ref } from "vue";
+    import { useClickAway } from "@codegorgeous/gorgeous-vue3";
 
     const oDIv = ref<HTMLDivElement>();
     const { remove } = useClickAway({
@@ -33,10 +28,10 @@
 ## 类型定义
 
 ```ts
-    interface UseClickAwayOptions {
-        root: Ref<Element | undefined> | Element
-        handle?: (e: Event) => void
-    }
+interface UseClickAwayOptions {
+    root: Ref<Element | undefined> | Element
+    handle?: (e: Event) => void
+}
 ```
 
 ## API

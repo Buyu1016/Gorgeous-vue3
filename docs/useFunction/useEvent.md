@@ -2,12 +2,6 @@
 
 为元素绑定与解绑事件集合
 
-## 导出
-
-```ts
-    import { UseEventHandle, UseEventOptions, useEvent } from "@codegorgeous/gorgeous-vue3";
-```
-
 ## 示例
 
 ### 基础示例
@@ -19,7 +13,8 @@
 
 <script lang="ts" setup>
     import { ref } from "vue";
-    
+    import { useEvent } from "@codegorgeous/gorgeous-vue3";
+
     const oInput = ref<HTMLInputElement>();
     const { remove } = useEvent({
         root: oDiv,
@@ -41,15 +36,15 @@
 ## 类型定义
 
 ```ts
-    interface UseEventOptions {
-        root: Ref<Element | undefined> | Window | Document | Element
-        events?: {
-            type: (keyof (HTMLElementEventMap | WindowEventMap)) | string
-            handle?: UseEventHandle,
-        }[]
-    }
+interface UseEventOptions {
+    root: Ref<Element | undefined> | Window | Document | Element
+    events?: {
+        type: (keyof (HTMLElementEventMap | WindowEventMap)) | string
+        handle?: UseEventHandle,
+    }[]
+}
 
-    type UseEventHandle = (e: Event) => void;
+type UseEventHandle = (e: Event) => void;
 ```
 
 ## API

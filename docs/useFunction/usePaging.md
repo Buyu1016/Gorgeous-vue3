@@ -1,12 +1,6 @@
-# usePaging(待优化)
+# usePaging
 
 分页数据状态管理
-
-## 导出
-
-```ts
-    import { UsePagingOptions, UsePagingCallback, usePaging } from "@codegorgeous/gorgeous-vue3";
-```
 
 ## 示例
 
@@ -14,6 +8,8 @@
 
 ```vue
 <script lang="ts" setup>
+    import { usePaging } from "@codegorgeous/gorgeous-vue3";
+
     function getData(config: Record<"index" | "size", number>) {
         return sleep([1, 2, 3, 4], 1000);
     }
@@ -35,13 +31,13 @@
 ## 类型定义
 
 ```ts
-    interface UsePagingOptions <T extends any[]> {
-        index?: number
-        size?: number
-        init?: T
-    };
+interface UsePagingOptions <T extends any[]> {
+    index?: number
+    size?: number
+    init?: T
+};
 
-    type UsePagingCallback <T extends any[]> = () => Promise<T>;
+type UsePagingCallback <T extends any[]> = () => Promise<T>;
 ```
 
 ## API

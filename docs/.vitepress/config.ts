@@ -52,6 +52,7 @@ const config = defineConfig({
         search: {
             provider: 'local'
         },
+        outline: "deep",
         outlineTitle: "目录",
     }
 });

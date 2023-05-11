@@ -2,18 +2,14 @@
 
 用户在某区域内按下手指/鼠标后的滑行方向, 例如用户左滑/右滑/上滑/下滑
 
-## 导出
-
-```ts
-    import { UseSlidingDirectionOptions, UseSlidingDirection, useSlidingDirection } from "@codegorgeous/gorgeous-vue3";
-```
-
 ## 示例
 
 ### 基础示例
 
 ```vue
 <script lang="ts" setup>
+    import { useSlidingDirection } from "@codegorgeous/gorgeous-vue3";
+
     const { remove } = useSlidingDirection({
         root: window,
         affirmation: 150,
@@ -27,13 +23,13 @@
 ## 类型定义
 
 ```ts
-    interface UseSlidingDirectionOptions {
-        root?: Ref<Element | undefined> | Window | Document
-        affirmation?: number
-        watchDirectionChange?: (direction: UseSlidingDirection, diff: number) => void
-    }
+interface UseSlidingDirectionOptions {
+    root?: Ref<Element | undefined> | Window | Document
+    affirmation?: number
+    watchDirectionChange?: (direction: UseSlidingDirection, diff: number) => void
+}
 
-    type UseSlidingDirection = "left" | "right" | "top" | "bottom";
+type UseSlidingDirection = "left" | "right" | "top" | "bottom";
 ```
 
 ## API
@@ -49,7 +45,6 @@
 | root | 检测滑动的元素区域 | `Ref<Element | undefined> | Window | Document | Element` | window |
 | affirmation | 滑动检测距离触发点 | `number` | 100 |
 | watchDirectionChange | 滑动监听回调函数 | `(direction: UseSlidingDirection, diff: number) => void` | - |
-
 
 ### Return(Object)
 | 参数 | 说明 | 类型 |

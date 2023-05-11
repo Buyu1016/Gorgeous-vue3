@@ -2,18 +2,14 @@
 
 异步函数的兜底与状态
 
-## 导出
-
-```ts
-    import { UseAsyncOptions, useAsync } from "@codegorgeous/gorgeous-vue3"
-```
-
 ## 示例
 
 ### 基础用法
 
 ```vue
 <script lang="ts" setup>
+    import { useAsync } from "@codegorgeous/gorgeous-vue3"
+
     function sleep<T>(result: T, timer = 0): Promise<T> {
         return new Promise<T>(resolve => {
             setTimeout(() => {
@@ -37,13 +33,13 @@
 ## 类型定义
 
 ```ts
-    interface UseAsyncOptions <T> {
-        init?: T
-        errorHandle?: (err: any) => void
-        start?: boolean
-    }
+interface UseAsyncOptions <T> {
+    init?: T
+    errorHandle?: (err: any) => void
+    start?: boolean
+}
 
-    type UseAsyncPromise <T> = () => Promise<T>;
+type UseAsyncPromise <T> = () => Promise<T>;
 ```
 
 ## API

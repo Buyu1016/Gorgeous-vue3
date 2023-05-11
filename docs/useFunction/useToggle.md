@@ -2,18 +2,14 @@
 
 切换状态
 
-## 导出
-
-```ts
-    import { UseToggleOptions, useToggle } from "@codegorgeous/gorgeous-vue3";
-```
-
 ## 示例
 
 ### 基础示例
 
 ```vue
 <script lang="ts" setup>
+    import { UseToggleOptions, useToggle } from "@codegorgeous/gorgeous-vue3";
+
     const { state, toggle } = useToggle({
         initValue: false
     });

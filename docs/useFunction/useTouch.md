@@ -2,12 +2,6 @@
 
 元素自由悬浮拖拽可吸附化
 
-## 导出
-
-```ts
-    import { UseTouchOptions, TouchElementStatus, TouchElementClassNameStatus, useTouch } from "@codegorgeous/gorgeous-vue3";
-```
-
 ## 示例
 
 ### 基础示例
@@ -19,6 +13,7 @@
 
 <script lang="ts" setup>
     import { ref } from "vue";
+    import { useTouch } from "@codegorgeous/gorgeous-vue3";
 
     const oDiv = ref<HTMLDivElement>();
     useTouch({
