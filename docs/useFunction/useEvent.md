@@ -57,7 +57,7 @@ type UseEventHandle = (e: Event) => void;
 ### Options
 | 参数 | 说明 | 类型 | 默认值 |
 | :- | :- | :- | :- |
-| root | 绑定事件的根元素 | `Ref<Element | undefined> | Window | Document | Element` | - |
+| root | 绑定事件的根元素 | `Ref<Element \| undefined> \| Window \| Document \| Element` | - |
 | events | 为根元素绑定的事件集合 | `UseEventOptions["events"]` | [] |
 
 ### Return(Object)

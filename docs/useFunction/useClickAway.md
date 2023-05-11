@@ -44,7 +44,7 @@ interface UseClickAwayOptions {
 ### Options
 | 参数 | 说明 | 类型 | 默认值 |
 | :- | :- | :- | :- |
-| root | 异步函数的默认初始化值 | `Ref<Element | undefined> | Element` | - |
+| root | 异步函数的默认初始化值 | `Ref<Element \| undefined> \| Element` | - |
 | handle | 是否默认执行异步函数 | `(e: Event) => void` | - |
 
 ### Return(Object)

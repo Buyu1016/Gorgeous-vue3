@@ -19,6 +19,8 @@
 ## 类型定义
 
 ```ts
+import { watch as VueWatch } from "vue";
+
 interface UseToggleOptions {
     initValue?: boolean
     watch?: Parameters<typeof VueWatch>[1]

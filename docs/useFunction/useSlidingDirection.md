@@ -42,7 +42,7 @@ type UseSlidingDirection = "left" | "right" | "top" | "bottom";
 ### Options
 | 参数 | 说明 | 类型 | 默认值 |
 | :- | :- | :- | :- |
-| root | 检测滑动的元素区域 | `Ref<Element | undefined> | Window | Document | Element` | window |
+| root | 检测滑动的元素区域 | `Ref<Element \| undefined> \| Window \| Document \| Element` | window |
 | affirmation | 滑动检测距离触发点 | `number` | 100 |
 | watchDirectionChange | 滑动监听回调函数 | `(direction: UseSlidingDirection, diff: number) => void` | - |
 
