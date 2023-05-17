@@ -49,13 +49,25 @@ import { GorgeousImage } from "@codegorgeous/gorgeous-vue3";
 在`src/main.(js/ts)使用`, 如果您的主应用入口为其他文件则在其相应文件内使用即可
 
 ```ts
-// 暂无示例
+import { createApp, defineAsyncComponent } from "vue";
+import { DirectiveInstall } from "@codegorgeous/gorgeous-vue3";
+import App from "@/App";
+
+const app = createApp(App);
+
+app.use(DirectiveInstall).mount("#app");
 ```
 
-**局部安装**
+**单独安装**
 
 ```ts
-// 暂无示例
+import { createApp, defineAsyncComponent } from "vue";
+import { loadingDirective } from "@codegorgeous/gorgeous-vue3";
+import App from "@/App";
+
+const app = createApp(App);
+
+app.use(loadingDirective).mount("#app");
 ```
 
 

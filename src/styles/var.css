@@ -1,0 +1,10 @@
+/* colors */
+:root {
+    --go-loading-border-color: red;
+    --go-loading-border-base-color: #aaaaaa;
+}
+
+/* duration */
+:root {
+    --go-loading-rotate-duration: 1s;
+}

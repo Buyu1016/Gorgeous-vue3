@@ -26,6 +26,7 @@ const config = defineConfig({
                     { text: '图片 / Image', link: '/components/Image' }, 
                     { text: '输入框 / Input', link: '/components/Input' }, 
                     { text: '富文本 / RichText', link: '/components/RichText' }, 
+                    { text: '加载 / Loading', link: '/components/Loading' }, 
                 ]
             },
             {

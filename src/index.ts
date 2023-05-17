@@ -1,8 +1,9 @@
-import { createApp } from "vue";
-import GorgeousUI from "@/entry";
+import { createApp, defineAsyncComponent } from "vue";
+import GorgeousUI, { loadingDirective, GorgeousInput, DirectiveInstall } from "@/entry";
 import App from "@/App";
-import { loading } from "@/directives/Loading/loading";
 
 const app = createApp(App);
 
-app.use(GorgeousUI).use(loading).mount("#app");
+app.use(GorgeousUI).use(loadingDirective, {
+    loadingComponent: GorgeousInput
+}).mount("#app");

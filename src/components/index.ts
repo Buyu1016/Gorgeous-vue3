@@ -4,14 +4,16 @@ import GorgeousImage from "./Image";
 import GorgeousInput from "./Input";
 import GorgeousSelect from "./Select";
 import GorgeousRichText from "./RichText";
+import GorgeousLoading from "./Loading";
 
-const Components = [GorgeousFloatButton, GorgeousImage, GorgeousInput, GorgeousSelect, GorgeousRichText];
+const Components = [GorgeousFloatButton, GorgeousImage, GorgeousInput, GorgeousSelect, GorgeousRichText, GorgeousLoading];
 export {
     GorgeousFloatButton,
     GorgeousImage,
     GorgeousInput,
     GorgeousSelect,
-    GorgeousRichText
+    GorgeousRichText,
+    GorgeousLoading
 }
 
 // 全量注册

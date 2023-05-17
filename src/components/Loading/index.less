@@ -1,0 +1,23 @@
+.gorgeous-loading-container {
+    display: inline-flex;
+    align-items: center;
+    &.vertical {
+        flex-direction: column;
+        justify-content: center;
+        .gorgeous-loading-content {
+            margin-right: 0;
+            margin-bottom: .25rem;
+        }
+    }
+    .gorgeous-loading-content {
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 100%;
+        border-color: var(--go-loading-border-color) var(--go-loading-border-base-color) var(--go-loading-border-base-color);
+        border-width: .3rem;
+        border-style: solid;
+        margin-right: .25rem;
+        animation: go-rotate var(--go-loading-rotate-duration) linear infinite;
+    }
+}
