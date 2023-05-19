@@ -6,4 +6,5 @@ import "uno.css"
 import "./config/system";
 import "./styles/var.css";
 import "./styles/animation.css";
+export { assignConfig } from "@/config/system";
 export default ComponentInstall;

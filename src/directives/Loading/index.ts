@@ -12,7 +12,7 @@ export default {
     install(app: App, options?: LoadingOptions) {
         const loadingDirectiveFunction: Directive<(HTMLElement & {_g_loading_instance_?: Element}), boolean> = (el, binding) => {
             //  1. 兜底加载动画组件&缓存dom实例
-            const _loadingElement = el._g_loading_instance_ || componentTransformElement(options?.loadingComponent || GorgeousLoading);
+            const _loadingElement = el._g_loading_instance_ || componentTransformElement(options?.loadingComponent || GorgeousLoading, options?.props);
             if (!el._g_loading_instance_) {
                 el._g_loading_instance_ = _loadingElement; // 缓存
             };

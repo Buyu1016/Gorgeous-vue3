@@ -6,3 +6,4 @@ export * from "./useAsync";
 export * from "./useClickAway";
 export * from "./useSlidingDirection";
 export * from "./usePaging";
+export * from "./useComponentPopup";

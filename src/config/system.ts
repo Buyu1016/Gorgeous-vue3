@@ -1,3 +1,5 @@
+import { App } from "vue";
+
 // 双端数据标识
 export const twoWayDataSymbol = Symbol("twoWayData");
 // 当前设备的类型: true => 移动端 false => Pc端
@@ -13,3 +15,14 @@ export const systemEventType = [
     ["mousemove", "touchmove"],
     ["mouseup", "touchend"]
 ]
+
+export interface GlobalConfig {
+    app?: App
+}
+
+// 全局app应用标识
+export const config: GlobalConfig = {};
+
+export function assignConfig(paramsConfig: GlobalConfig) {
+    Object.assign(config, paramsConfig);
+}
