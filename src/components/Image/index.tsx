@@ -61,7 +61,7 @@ export default defineComponent({
                 scrollTop = top + clientHeight;
             }
             const imageTop = oImage.value.offsetTop - height;
-            if (scrollTop - imageTop >= props.lazyOffset) {
+            if (scrollTop - imageTop >= Math.abs(props.lazyOffset)) {
                 oImage.value.src = oImage.value.dataset.src || "";
             }
         };
@@ -71,8 +71,23 @@ export default defineComponent({
                 if (props.lazy) { // 图片懒加载策略
                     oImage.value.setAttribute("data-src", props.zip(props.src));
                     overflowAutoContainer.value = deepFindOverflowAutoFatherElement(oImage.value);
-                    overflowAutoContainer.value.addEventListener("scroll", handleDistanceTop);
-                    handleDistanceTop(); // 初始化检测一次
+                    if (window.IntersectionObserver) {
+                        console.log(props.lazyOffset + "px");
+                        const _observer = new IntersectionObserver(e => {
+                            const [entry] = e;
+                            if (entry.isIntersecting && oImage.value) {
+                                oImage.value.src = oImage.value.dataset.src || "";
+                                _observer.unobserve(oImage.value);
+                            };
+                        }, {
+                            root: overflowAutoContainer.value === window ? document : overflowAutoContainer.value as Element,
+                            rootMargin: Math.abs(props.lazyOffset) + "px"
+                        });
+                        _observer.observe(oImage.value);
+                    } else {
+                        overflowAutoContainer.value.addEventListener("scroll", handleDistanceTop);
+                        handleDistanceTop(); // 初始化检测一次
+                    }
                 }
             }
         });
