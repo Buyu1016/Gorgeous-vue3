@@ -13,8 +13,12 @@
         display: none;
     }
     .gorgeous-popup {
+        max-width: 90vw;
+        max-height: 90vh;
         background: var(--go-popup-background-color);
         border-radius: var(--go-popup-radius-base);
+        display: flex;
+        flex-direction: column;
         .gorgeous-popup-header {
             padding: .5rem .5rem .5rem 1rem;
             display: flex;
@@ -28,7 +32,9 @@
             padding-top: 0;
         }
         .gorgeous-popup-body {
+            flex: 1;
             padding: 1rem;
+            overflow: hidden auto;
         }
     }
     .gorgeous-popup-close {

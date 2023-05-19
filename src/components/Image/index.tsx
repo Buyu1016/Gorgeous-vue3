@@ -72,7 +72,6 @@ export default defineComponent({
                     oImage.value.setAttribute("data-src", props.zip(props.src));
                     overflowAutoContainer.value = deepFindOverflowAutoFatherElement(oImage.value);
                     if (window.IntersectionObserver) {
-                        console.log(props.lazyOffset + "px");
                         const _observer = new IntersectionObserver(e => {
                             const [entry] = e;
                             if (entry.isIntersecting && oImage.value) {

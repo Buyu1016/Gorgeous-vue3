@@ -17,7 +17,7 @@ export interface UseComponentPopupOptions {
     // 点击空白处关闭功能
     clickOverlayClose?: boolean
     // 关闭按钮功能
-    clickButtonClose?: boolean
+    visibleButtonClose?: boolean
     // z-index层级
     overlayZIndex?: number
     // 标题
@@ -30,7 +30,7 @@ export interface CreatePopupElementOptions {
     // 点击空白处关闭功能
     clickOverlayClose: boolean
     // 关闭按钮功能
-    clickButtonClose: boolean
+    visibleButtonClose: boolean
     // z-index层级
     overlayZIndex: number
 }
@@ -54,7 +54,7 @@ export function useComponentPopup(options: UseComponentPopupOptions) {
         // 制作弹窗
         const _popupElement = createPopupElement(_componentElement, toggle, {
             clickOverlayClose: options.clickOverlayClose ?? true,
-            clickButtonClose: options.clickButtonClose ?? true,
+            visibleButtonClose: options.visibleButtonClose ?? true,
             overlayZIndex: options.overlayZIndex ?? 100,
             title: options.title
         });
@@ -81,14 +81,14 @@ export function useComponentPopup(options: UseComponentPopupOptions) {
 function createPopupElement(children: Element, toggle: (state?: boolean) => void, options: CreatePopupElementOptions) {
     // header
     let _popupHeaderContainer: HTMLDivElement | undefined;
-    if (options.clickButtonClose || options.title) {
+    if (options.visibleButtonClose || options.title) {
         let _popupTitle: HTMLDivElement | undefined;
         options.title && (_popupTitle = createElement("div", {
             className: "",
             innerText: options.title
         }));
         let _closeBtn: HTMLButtonElement | undefined;
-        options.clickButtonClose && (_closeBtn = createElement("button", {
+        options.visibleButtonClose && (_closeBtn = createElement("button", {
             className: "gorgeous-popup-close",
             innerHTML: '<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z"></path></svg>',
         }));
