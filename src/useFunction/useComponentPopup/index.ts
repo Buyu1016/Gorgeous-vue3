@@ -66,6 +66,10 @@ export function useComponentPopup(options: UseComponentPopupOptions) {
     return {
         state,
         toggle,
+        regenerate: () => {
+            remove?.();
+            popupInit();
+        },
         unMount: () => {
             remove?.()
         } // 手动卸载

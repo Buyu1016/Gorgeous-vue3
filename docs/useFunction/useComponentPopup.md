@@ -6,14 +6,18 @@
 
 ### 基础示例
 
-可自行传入组件本身所需要的`props`, 同样`props`内是可以以`onXxxx`的方式接收事件响应.
+可自行传入组件本身所需要的`props`, 同样`props`内是可以以`onXxxx`的方式接收事件响应. 重新生成适用于重置组件内的状态
 
-<button @click="popupComponent.toggle">打开弹窗</button>
+<button class="mr-4" @click="popupComponent.toggle">打开弹窗</button>
+<button class="mr-4" @click="popupComponent.unMount">销毁弹窗</button>
+<button @click="popupComponent.regenerate">重新生成</button>
 
 ::: details Vue
 ```vue
 <template>
-    <button @click="popupComponent.toggle">打开弹窗</button>
+    <button class="mr-4" @click="popupComponent.toggle">打开弹窗</button>
+    <button class="mr-4" @click="popupComponent.unMount">销毁弹窗</button>
+    <button @click="popupComponent.regenerate">重新生成</button>
 </template>
 
 <script setup>
@@ -71,4 +75,5 @@
 | :- | :- | :- |
 | state | 弹窗状态 | `Ref<boolean>` |
 | toggle | 切换弹窗状态 | `(value?: boolean) => void` |
+| regenerate | 重新装载弹窗组件 | `() => void` |
 | unMount | 卸载弹窗组件 | `() => void` |
