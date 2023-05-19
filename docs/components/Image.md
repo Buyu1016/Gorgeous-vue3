@@ -6,7 +6,7 @@
 ### 基础用法
 <GorgeousImage
     class="w-25 h-25"
-    src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+    src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
 />
 
 ::: details Vue
@@ -15,7 +15,7 @@
 <template>
     <GorgeousImage
         class="w-30 h-30"
-        src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+        src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
     />
 </template>
 ```
@@ -29,7 +29,7 @@
         <div>fill</div>
         <GorgeousImage
             class="w-30 h-30"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="fill"
         />
     </div>
@@ -37,7 +37,7 @@
         <div>cover</div>
         <GorgeousImage
             class="w-25 h-25"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="cover"
         />
     </div>
@@ -45,7 +45,7 @@
         <div>contain</div>
         <GorgeousImage
             class="w-25 h-25"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="contain"
         />
     </div>
@@ -53,7 +53,7 @@
         <div>none</div>
         <GorgeousImage
             class="w-25 h-25"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="none"
         />
     </div>
@@ -61,7 +61,7 @@
         <div>scale-down</div>
         <GorgeousImage
             class="w-25 h-25"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="scale-down"
         />
     </div>
@@ -75,7 +75,7 @@
         <div>fill</div>
         <GorgeousImage
             class="w-30 h-30"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="fill"
         />
     </div>
@@ -83,7 +83,7 @@
         <div>cover</div>
         <GorgeousImage
             class="w-25 h-25"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="cover"
         />
     </div>
@@ -91,7 +91,7 @@
         <div>contain</div>
         <GorgeousImage
             class="w-25 h-25"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="contain"
         />
     </div>
@@ -99,7 +99,7 @@
         <div>none</div>
         <GorgeousImage
             class="w-25 h-25"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="none"
         />
     </div>
@@ -107,7 +107,7 @@
         <div>scale-down</div>
         <GorgeousImage
             class="w-25 h-25"
-            src="http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg"
+            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
             fit="scale-down"
         />
     </div>
@@ -173,7 +173,6 @@
 ```
 
 :::
-
 
 
 ## API

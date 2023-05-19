@@ -17,6 +17,11 @@ pnpm install @codegorgeous/gorgeous-vue3
 
 ## 使用
 
+需在src/main.(js/ts)中固定引入一定的样式, 以防影响到部分功能的展示与使用
+```ts
+import "@codegorgeous/gorgeous-vue3/dist/entry.css";
+```
+
 ### 组件
 可以使用全局安装, 也可以使用局部导入, 组件都是更加贴合自原生的标签, 只是功能向会靠近`Vue3`进行封装一层, 在`Vue3`中更加方便易用不用写过多的贴合原生功能处理
 
@@ -51,6 +56,7 @@ import { GorgeousImage } from "@codegorgeous/gorgeous-vue3";
 ```ts
 import { createApp, defineAsyncComponent } from "vue";
 import { DirectiveInstall } from "@codegorgeous/gorgeous-vue3";
+import "@codegorgeous/gorgeous-vue3/dist/entry.css";
 import App from "@/App";
 
 const app = createApp(App);

@@ -39,11 +39,12 @@
 
 <script setup>
     import { useComponentPopup, GorgeousImage } from "../../src/entry";
+    import image from "../public/image1.jpeg"
 
     const popupComponent = useComponentPopup({
         component: GorgeousImage,
         props: {
-            src: "http://qiniu.codegorgeous.top/%E5%BC%8F%E5%AE%88&&1676300851535.jpeg",
+            src: image,
             onClick: () => {
                 alert("你点击了一下可爱的式守同学");
             }

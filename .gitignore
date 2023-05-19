@@ -3,3 +3,4 @@ dist
 docs/.vitepress/dist
 coverage
 demo
+.DS_Store
