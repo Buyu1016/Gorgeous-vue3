@@ -3,7 +3,7 @@
  * 需要提供一个手动卸载的方式
  */
 import { Component } from "vue";
-import { componentTransformElement } from "@/utils/vue";
+import { componentTransformElement, createElement, querySelectorElement } from "@/utils";
 import { useToggle } from "@/useFunction";
 import "./index.less";
 
@@ -11,15 +11,28 @@ export interface UseComponentPopupOptions {
     // 嵌入组件, 组件内部的props必须接收一个fakeCallback参数用于处理内外部事件通信
     component: Component
     // 组件对应的props参数
-    props?: any,
+    props?: Record<string, any>,
     // 弹窗组件的挂载容器
     mountRoot?: string | Element
-    // 事件响应
-    eventHandle?: (...args: any[]) => void
-    // TODO:
     // 点击空白处关闭功能
+    clickOverlayClose?: boolean
     // 关闭按钮功能
+    clickButtonClose?: boolean
     // z-index层级
+    overlayZIndex?: number
+    // 标题
+    title?: string
+}
+
+export interface CreatePopupElementOptions {
+    // 标题
+    title?: string
+    // 点击空白处关闭功能
+    clickOverlayClose: boolean
+    // 关闭按钮功能
+    clickButtonClose: boolean
+    // z-index层级
+    overlayZIndex: number
 }
 
 export function useComponentPopup(options: UseComponentPopupOptions) {
@@ -32,14 +45,19 @@ export function useComponentPopup(options: UseComponentPopupOptions) {
     });
     let open, close, remove;
     // 挂载容器初始捕获
-    const _mountElement = options.mountRoot ? (typeof options.mountRoot === "string" ? document.querySelector(options.mountRoot) : options.mountRoot) : document.body;
+    const _mountElement = options.mountRoot ? querySelectorElement(options.mountRoot) : document.body;
     // 弹窗初始化
     function popupInit() {
         if (!_mountElement) throw new Error('弹窗挂载容器不存在');
         // 内部的事件均已onXxx的形式在props中存在即可
         const _componentElement = componentTransformElement(options.component, options.props);
         // 制作弹窗
-        const _popupElement = createPopupElement(_componentElement, toggle);
+        const _popupElement = createPopupElement(_componentElement, toggle, {
+            clickOverlayClose: options.clickOverlayClose ?? true,
+            clickButtonClose: options.clickButtonClose ?? true,
+            overlayZIndex: options.overlayZIndex ?? 100,
+            title: options.title
+        });
         open = _popupElement.open;
         close = _popupElement.close;
         remove = _popupElement.remove;
@@ -48,56 +66,76 @@ export function useComponentPopup(options: UseComponentPopupOptions) {
     return {
         state,
         toggle,
-        unMount: remove
+        unMount: () => {
+            remove?.()
+        } // 手动卸载
     }
 };
 
-// TODO:
 /**
  * 弹窗元素及其控制器
  * @param children 放入弹窗的元素
  * @param toggle 与外界联通的状态切换器
  * @returns 
  */
-function createPopupElement(children: Element, toggle: (state?: boolean) => void) {
-    const _container = document.createElement("div");
-    _container.classList.add("gorgeous-mask");
-    const _popup = document.createElement("div");
-    _popup.classList.add("gorgeous-popup");
-    // close右上角关闭按钮
-    const _closeBtn = document.createElement("button");
-    _closeBtn.innerText = "关闭"
-    _closeBtn.classList.add("gorgeous-popup-close");
-    _popup.appendChild(_closeBtn);
-    _popup.appendChild(children);
-    _container.appendChild(_popup);
-    _container.classList.add("hidden");
-    _closeBtn.addEventListener("click", e => {
-        close();
+function createPopupElement(children: Element, toggle: (state?: boolean) => void, options: CreatePopupElementOptions) {
+    // header
+    let _popupHeaderContainer: HTMLDivElement | undefined;
+    if (options.clickButtonClose || options.title) {
+        let _popupTitle: HTMLDivElement | undefined;
+        options.title && (_popupTitle = createElement("div", {
+            className: "",
+            innerText: options.title
+        }));
+        let _closeBtn: HTMLButtonElement | undefined;
+        options.clickButtonClose && (_closeBtn = createElement("button", {
+            className: "gorgeous-popup-close",
+            innerHTML: '<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z"></path></svg>',
+        }));
+        _closeBtn && _closeBtn.addEventListener("click", e => {
+            close();
+            e.stopPropagation();
+        });
+        _popupHeaderContainer = createElement("div", {
+            className: "gorgeous-popup-header",
+            children: [_popupTitle, _closeBtn].filter(t => t) as Element[]
+        });
+    };
+    const _popupBodyContainer = createElement("div", {
+        className: "gorgeous-popup-body",
+        children
+    });
+    const _popupContainer = createElement("div", {
+        className: "gorgeous-popup",
+        children: [_popupHeaderContainer, _popupBodyContainer].filter(t => t) as Element[]
+    });
+    const _overlayContainer = createElement("div", {
+        className: "gorgeous-overlay animate__animated animate__fadeIn hidden",
+        children: _popupContainer
+    });
+    _overlayContainer.style.zIndex = options.overlayZIndex.toString();
+    _popupContainer.addEventListener("click", e => { // 内容区域阻止冒泡
         e.stopPropagation();
     });
-    _popup.addEventListener("click", e => { // 内容区域阻止冒泡
-        e.stopPropagation();
-    });
-    _container.addEventListener("click", e => {
+    options.clickOverlayClose && _overlayContainer.addEventListener("click", e => {
         close();
         e.stopPropagation(); // 防止冒泡到上层
     });
     // 配套的事件
     function open() {
-        _container?.classList.remove("hidden");
+        _overlayContainer?.classList.remove("hidden");
         toggle(true);
     };
     function close() {
-        _container?.classList.add("hidden");
+        _overlayContainer?.classList.add("hidden");
         toggle(false);
     };
     function remove() {
-        _container?.remove();
+        _overlayContainer?.remove();
         toggle(false);
     };
     return {
-        popup: _container,
+        popup: _overlayContainer,
         open,
         close,
         remove

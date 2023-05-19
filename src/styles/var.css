@@ -2,9 +2,21 @@
 :root {
     --go-loading-border-color: red;
     --go-loading-border-base-color: #aaaaaa;
+    --go-overlay-background-color: rgba(0, 0, 0, .7);
+    --go-popup-background-color: #FFFFFF;
 }
 
 /* duration */
 :root {
     --go-loading-rotate-duration: 1s;
+}
+
+/* padding */
+:root {
+    --go-popup-padding-base: 1rem;
+}
+
+/* radius */
+:root {
+    --go-popup-radius-base: .75rem;
 }

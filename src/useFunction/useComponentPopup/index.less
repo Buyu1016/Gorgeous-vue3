@@ -1,23 +1,46 @@
-.gorgeous-mask {
+.gorgeous-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #abcdef;
+    background-color: var(--go-overlay-background-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    .hidden {
+    animation-duration: .3s !important;
+    &.hidden {
         display: none;
     }
     .gorgeous-popup {
-        background: #FFFFFF;
-        padding: 1rem;
-        border-radius: .75rem;
+        background: var(--go-popup-background-color);
+        border-radius: var(--go-popup-radius-base);
+        .gorgeous-popup-header {
+            padding: .5rem .5rem .5rem 1rem;
+            display: flex;
+            div {
+                margin-right: 1rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        .gorgeous-popup-header + .gorgeous-popup-body {
+            padding-top: 0;
+        }
+        .gorgeous-popup-body {
+            padding: 1rem;
+        }
     }
     .gorgeous-popup-close {
-        display: block;
+        display: flex;
         margin: 0 0 0 auto;
+        border: none;
+        background-color: unset;
+        padding: 0;
+        cursor: pointer;
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 }
