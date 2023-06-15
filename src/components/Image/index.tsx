@@ -1,4 +1,5 @@
 import { defineComponent, PropType, ref, onMounted, computed, onBeforeUnmount } from "vue";
+import { deepFindOverflowAutoFatherElement } from "@/utils/dom";
 
 type ImageFit = "fill" | "contain" | "cover" | "none" | "scale-down"
 type ImageLoading = "eager" | "lazy"
@@ -115,18 +116,3 @@ export default defineComponent({
         )
     }
 });
-
-/**
- * 寻找距离该元素最近的可滚动容器
- * @param element 
- * @returns 
- */
-function deepFindOverflowAutoFatherElement(element: Element): HTMLElement | Window {
-    if (!element.parentElement) return window;
-    const { overflowX, overflowY } = element.parentElement.style;
-    if ([overflowX, overflowY].includes("auto")) {
-        return element.parentElement;
-    } else {
-        return deepFindOverflowAutoFatherElement(element.parentElement);
-    }
-}

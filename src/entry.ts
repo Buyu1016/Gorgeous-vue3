@@ -4,6 +4,7 @@ export * from "@/directives";
 import { ComponentInstall } from "@/components";
 import "uno.css"
 import "animate.css";
+import 'animate.css/animate.compat.css';
 import "./config/system";
 import "./styles/var.css";
 import "./styles/animation.css";

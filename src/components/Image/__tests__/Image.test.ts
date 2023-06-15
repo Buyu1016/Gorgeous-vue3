@@ -1,9 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
 import Image from '..';
+import { Window } from 'happy-dom';
 
 describe('Image', () => {
-    test('Props', () => {
+    test('Props', async () => {
         const imgSrc = "http://qiniu.codegorgeous.top/小鸟&&1682099658251.jpeg",
             alt = "test",
             fit = "contain",
@@ -25,32 +26,4 @@ describe('Image', () => {
         expect(oImg.element.loading).toMatch(loading);
         expect(oImg.element.referrerPolicy).toMatch(referrerPolicy);
     });
-    
 })
-
-interface Item {
-    title: string
-    children?: Item[]
-}
-
-const data: Item[] = [{
-    title: "模块1",
-    children: [{
-        title: "模块1-1",
-        children: [{
-            title: "模块1-1-1"
-        }]
-    }, {
-        title: "模块1-2",
-    }]
-}, {
-    title: "模块2",
-    children: [{
-        title: "模块2-1",
-    }, {
-        title: "模块2-2",
-        children: [{
-            title: "模块2-2-1"
-        }]
-    }]
-}]

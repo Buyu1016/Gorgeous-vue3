@@ -4,3 +4,4 @@ docs/.vitepress/dist
 coverage
 demo
 .DS_Store
+yarn-error.log

@@ -1,13 +1,23 @@
 {
-  "hash": "a0c10659",
-  "browserHash": "45eface7",
+  "hash": "066bc6f7",
+  "browserHash": "c604ec80",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "997cfc87",
+      "fileHash": "60b4c132",
       "needsInterop": false
+    },
+    "wow.js": {
+      "src": "../../../../node_modules/wow.js/dist/wow.js",
+      "file": "wow__js.js",
+      "fileHash": "954ecf78",
+      "needsInterop": true
     }
   },
-  "chunks": {}
+  "chunks": {
+    "chunk-RSJERJUL": {
+      "file": "chunk-RSJERJUL.js"
+    }
+  }
 }

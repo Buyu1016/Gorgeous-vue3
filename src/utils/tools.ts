@@ -7,3 +7,8 @@ export function twoWayProjection(map: Map<any, any>) {
     map.set(twoWayDataSymbol, true);
     return map;
 }
+
+// 生成一个6为的hash值字符串
+export function generateHash() {
+    return Math.random().toString(16).slice(2, 8);
+};

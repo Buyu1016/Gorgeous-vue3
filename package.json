@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
-    "vue": "^3.2.36"
+    "vue": "^3.2.36",
+    "wow.js": "^1.2.2"
   }
 }
