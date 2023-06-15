@@ -2,9 +2,9 @@ import {
   __commonJS
 } from "./chunk-RSJERJUL.js";
 
-// node_modules/wow.js/dist/wow.js
+// node_modules/.pnpm/registry.npmmirror.com+wow.js@1.2.2/node_modules/wow.js/dist/wow.js
 var require_wow = __commonJS({
-  "node_modules/wow.js/dist/wow.js"(exports, module) {
+  "node_modules/.pnpm/registry.npmmirror.com+wow.js@1.2.2/node_modules/wow.js/dist/wow.js"(exports, module) {
     (function(global, factory) {
       if (typeof define === "function" && define.amd) {
         define(["module", "exports"], factory);

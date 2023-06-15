@@ -1,5 +1,4 @@
 import { Directive, App } from "vue";
-import WOW from "wow.js";
 import { deepFindOverflowAutoFatherElement } from "@/utils/dom";
 import { generateHash } from "@/utils/tools";
 
@@ -14,7 +13,6 @@ export interface DeferOptions {
 
 export default {
     install(app: App, options?: DeferOptions) {
-        let wowInstance: WOW;
         const deferDirectiveFunction: Directive<HTMLElement, DeferOptions> = (el, binding) => {
             el.classList.add("wow");
             el.classList.add(`animate__${binding.value?.animateName ?? options?.animateName ?? "fadeIn"}`);
@@ -28,14 +26,17 @@ export default {
                     scrollContainerDataAttribute = (targetScrollContainer as HTMLElement)?.dataset["wowScrollContainer"] as string;
                 } else (targetScrollContainer as HTMLElement).setAttribute("data-wow-scroll-container", scrollContainerDataAttribute);
             };
-            wowInstance = new WOW({
-                callback(targetElement: HTMLElement) {
-                    options?.callback?.(targetElement);
-                    binding.value?.callback?.(targetElement);
-                },
-                scrollContainer: targetScrollContainer === window ? null : `[data-wow-scroll-container='${scrollContainerDataAttribute}']`
-            });
+            // 因为wow.js内部默认初始化会使用到window, 所以这里需要异步加载, 以保持vitepress的正常打包
+            import("wow.js").then(params => {
+                const wowInstance = new params.default({
+                    callback(targetElement: HTMLElement) {
+                        options?.callback?.(targetElement);
+                        binding.value?.callback?.(targetElement);
+                    },
+                    scrollContainer: targetScrollContainer === window ? null : `[data-wow-scroll-container='${scrollContainerDataAttribute}']`
+                });
             wowInstance.init();
+        });
         };
         app.directive("defer", deferDirectiveFunction);
     }

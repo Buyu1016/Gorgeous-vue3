@@ -1,17 +1,17 @@
 {
-  "hash": "066bc6f7",
-  "browserHash": "c604ec80",
+  "hash": "116c0d43",
+  "browserHash": "882e29de",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "60b4c132",
+      "fileHash": "1df9294e",
       "needsInterop": false
     },
     "wow.js": {
-      "src": "../../../../node_modules/wow.js/dist/wow.js",
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+wow.js@1.2.2/node_modules/wow.js/dist/wow.js",
       "file": "wow__js.js",
-      "fileHash": "954ecf78",
+      "fileHash": "545a6242",
       "needsInterop": true
     }
   },
